@@ -10,7 +10,7 @@ kind: Kustomization
 
 images:
 - name: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi
-  newTag: latest
+  newTag: 8624a01d9590177ffa91673e9a644dd257606cf2
 
 resources:
 - bananaapi-deployment.yaml

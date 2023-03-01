@@ -40,7 +40,7 @@ spec:
         app: bananaapi
     spec:
       containers:
-      - image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
+      - image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:8624a01d9590177ffa91673e9a644dd257606cf2
         imagePullPolicy: Always
         name: bananaapi
         ports:
