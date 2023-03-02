@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: bananaapi
-        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
+        image: 263427518575.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 6012
@@ -64,7 +64,7 @@ metadata:
   name: bananaapi-service
   namespace: ingress-nginx
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:236229348458:certificate/09ea55f3-c613-4de2-a399-0d4dc03f2653
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:263427518575:certificate/b31ddec3-6e66-4593-b723-c8043599e884
 spec:
   selector:
     app: bananaapi
