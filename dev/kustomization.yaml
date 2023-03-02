@@ -10,5 +10,5 @@ bases:
 #     patch: "- op: replace\n  path: \"/metadata/labels/tags.datadoghq.com~1env\"\n  value: \"dev1\"\n- op: replace\n  path: \"/spec/template/metadata/labels/tags.datadoghq.com~1env\"\n  value: \"dev1\"\n- op: add\n  path: \"/metadata/annotations/reloader.stakater.com~1auto\"\n  value: \"true\"\n  "
 images:
   - name: 263427518575.dkr.ecr.us-east-1.amazonaws.com/bananaapi
-    newTag: 9ca14a81fc596a7c73667c29429f0593ba5001fc
+    newTag: 4ace726b525149757872f6fa963e6b3d41ae2eb7
 ---

@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   port: "6012"
-  version: v4.0
+  version: v5.0
 kind: ConfigMap
 metadata:
   name: bananaapi-configmap
@@ -62,7 +62,7 @@ spec:
             configMapKeyRef:
               key: port
               name: bananaapi-configmap
-        image: 263427518575.dkr.ecr.us-east-1.amazonaws.com/bananaapi:9ca14a81fc596a7c73667c29429f0593ba5001fc
+        image: 263427518575.dkr.ecr.us-east-1.amazonaws.com/bananaapi:4ace726b525149757872f6fa963e6b3d41ae2eb7
         imagePullPolicy: Always
         name: bananaapi
         ports:
