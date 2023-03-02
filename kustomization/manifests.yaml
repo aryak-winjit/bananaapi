@@ -62,7 +62,7 @@ spec:
             configMapKeyRef:
               key: port
               name: bananaapi-configmap
-        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
+        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:ba2fe62cea0cf2bdfa8e16860c774c4911e68c67
         imagePullPolicy: Always
         name: bananaapi
         ports:
