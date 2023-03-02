@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   port: "6012"
-  version: v2.0
+  version: v4.0
 kind: ConfigMap
 metadata:
   name: bananaapi-configmap
@@ -11,7 +11,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:236229348458:certificate/09ea55f3-c613-4de2-a399-0d4dc03f2653
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:263427518575:certificate/b31ddec3-6e66-4593-b723-c8043599e884
   name: bananaapi-service
   namespace: ingress-nginx
 spec:
@@ -62,7 +62,7 @@ spec:
             configMapKeyRef:
               key: port
               name: bananaapi-configmap
-        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:ba2fe62cea0cf2bdfa8e16860c774c4911e68c67
+        image: 263427518575.dkr.ecr.us-east-1.amazonaws.com/bananaapi:9ca14a81fc596a7c73667c29429f0593ba5001fc
         imagePullPolicy: Always
         name: bananaapi
         ports:
