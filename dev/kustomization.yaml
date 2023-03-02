@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - ../base
+  - ./config.yaml
+# patches:
+#   - target:
+#       kind: Deployment
+#       name: crypto-withdrawal-global-deployment
+#     patch: "- op: replace\n  path: \"/metadata/labels/tags.datadoghq.com~1env\"\n  value: \"dev1\"\n- op: replace\n  path: \"/spec/template/metadata/labels/tags.datadoghq.com~1env\"\n  value: \"dev1\"\n- op: add\n  path: \"/metadata/annotations/reloader.stakater.com~1auto\"\n  value: \"true\"\n  "
+images:
+  - name: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
+    newTag: latest
+---

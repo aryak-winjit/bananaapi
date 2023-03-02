@@ -6,7 +6,7 @@ app.get('/', function (req, res) {
   res.send('Banana API!');
 });
 app.get('/banana', function (req, res) {
-  res.send('Banana API! path /banana argoCD ' + process.env.OWNER + " " + process.env.VERSION);
+  res.send('Banana API! path /banana argoCD ' + process.env.OWNER + " " + process.env.VERSION + " " + process.env.PORT);
 });
 app.listen(6012, function () {
   console.log('Example app listening on port 6012!' + env_data_owner);
