@@ -1,11 +1,10 @@
 apiVersion: v1
 data:
-  keys: "image.public.key=771 \nrsa.public.key=42\n"
-  owner: AryaKumar
-  version: v1.1
+  port: "6012"
+  version: v2.0
 kind: ConfigMap
 metadata:
-  name: example-configmap
+  name: bananaapi-configmap
   namespace: ingress-nginx
 ---
 apiVersion: v1
@@ -52,17 +51,18 @@ spec:
       containers:
       - env:
         - name: OWNER
-          valueFrom:
-            configMapKeyRef:
-              key: owner
-              name: example-configmap
+          value: aryakumar
         - name: VERSION
           valueFrom:
             configMapKeyRef:
               key: version
-              name: example-configmap
-        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:docker push
-          236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
+              name: bananaapi-configmap
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              key: port
+              name: bananaapi-configmap
+        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
         imagePullPolicy: Always
         name: bananaapi
         ports:
