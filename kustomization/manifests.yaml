@@ -1,7 +1,8 @@
 apiVersion: v1
 data:
   keys: "image.public.key=771 \nrsa.public.key=42\n"
-  owner: aryakumar
+  owner: AryaKumar
+  version: v1.1
 kind: ConfigMap
 metadata:
   name: example-configmap
@@ -55,7 +56,13 @@ spec:
             configMapKeyRef:
               key: owner
               name: example-configmap
-        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:d49aafc99b2fed1734c4d7b0eb9051307af33521
+        - name: VERSION
+          valueFrom:
+            configMapKeyRef:
+              key: version
+              name: example-configmap
+        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:docker push
+          236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
         imagePullPolicy: Always
         name: bananaapi
         ports:
