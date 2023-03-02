@@ -24,6 +24,10 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 6012
+        volumes:
+        - name: appconfig-data-volume
+          configMap:
+            name: example-configmap
         resources:
           requests:
             cpu: 100m
@@ -88,4 +92,18 @@ spec:
       target:
         type: Utilization
         averageUtilization: 60
+---
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: example-configmap
+  namespace: ingress-nginx 
+data:
+  # Configuration values can be set as key-value properties
+  OWNER : aryakumar
+  
+  # Or set as complete file contents (even JSON!)
+  keys: | 
+    image.public.key=771 
+    rsa.public.key=42
 ---
