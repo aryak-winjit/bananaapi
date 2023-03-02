@@ -20,14 +20,21 @@ spec:
     spec:
       containers:
       - name: bananaapi
-        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
+        image: 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:docker push 236229348458.dkr.ecr.us-east-1.amazonaws.com/bananaapi:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 6012
-        volumes:
-        - name: appconfig-data-volume
-          configMap:
-            name: example-configmap
+        env:
+        - name: OWNER
+          valueFrom:
+            configMapKeyRef:
+              name: example-configmap
+              key: owner
+        - name: VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: example-configmap
+              key: version
         resources:
           requests:
             cpu: 100m
@@ -100,7 +107,8 @@ metadata:
   namespace: ingress-nginx 
 data:
   # Configuration values can be set as key-value properties
-  OWNER : aryakumar
+  owner : AryaKumar
+  version: v1.1
   
   # Or set as complete file contents (even JSON!)
   keys: | 
