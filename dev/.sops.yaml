@@ -1,0 +1,7 @@
+creation_rules:
+    - path_regex: \.sops\.yaml$
+      kms: 'arn:aws:kms:us-east-1:263427518575:alias/opalink-poc-sops-kms'
+      aws_profile: "opalink"
+    - path_regex: \.encrypted\.yaml$
+      kms: 'arn:aws:kms:us-east-1:263427518575:alias/opalink-poc-sops-kms'
+      aws_profile: "opalink"  

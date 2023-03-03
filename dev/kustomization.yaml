@@ -3,6 +3,7 @@ kind: Kustomization
 bases:
   - ../base
   - ./config.yaml
+  - ./dev.encrypted.yaml
 # patches:
 #   - target:
 #       kind: Deployment

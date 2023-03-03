@@ -1,0 +1,32 @@
+apiVersion: isindir.github.com/v1alpha3
+kind: SopsSecret
+metadata:
+    name: bananaapi-sopssecret
+    namespace: ingress-nginx
+spec:
+    # suspend reconciliation of the sops secret object
+    secretTemplates:
+        - name: my-secret-name-1
+          # labels:
+          #   label1: value1
+          # annotations:
+          #   key1: value1
+          # stringData:
+          #   data-name0: data-value0
+          data:
+            DB_PASS: ENC[AES256_GCM,data:9ARP7dcvI88MJHt1,iv:yvJPKLF1dbRsOxsURPbxqZ9YH3OgWrlDE1WKW5kbzTo=,tag:07l5+zRQ0TIolmLHohmL4g==,type:str]
+sops:
+    kms:
+        - arn: arn:aws:kms:us-east-1:263427518575:alias/opalink-poc-sops-kms
+          created_at: "2023-03-03T07:18:07Z"
+          enc: AQICAHg0kBCbE9lLp/D8Fr0rw7ip8CDNL7Q96hAD1NvueeCavQEi2AckKwI+j1a8RELv0uXBAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMbH3XqmO8BMJ5WdmTAgEQgDsFeCWQDRCY1VBqusBYhTTwaRYdWdDmGsXS0UsBhDoSdzfwTCo/cIKvrFDv+3/TbbuQEpn8tG0e4Q9tMw==
+          aws_profile: opalink
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2023-03-03T07:18:08Z"
+    mac: ENC[AES256_GCM,data:ttZ5VK8Sb2NOoe/W3lCBcKpXpm5QAAmdB4wU8V32lcMSm3ee5j1sIccMiWraQsjDsCn+HsJctK4Iyv44lFqucZBMPwpKrJqVZiOrAA9akr2BbK5TnkuYRXiAshBrzMFCMwEwthoS66mzPNMIC1U90pR4PtZU1X2O4WgOozmZrRk=,iv:wabhaRUqGxFZ3a1lFxm6clHhCazKijuz0w0fpcU6QRo=,tag:yKqK4fpZhonG2vfywhTMKg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

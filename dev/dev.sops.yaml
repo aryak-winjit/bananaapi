@@ -1,0 +1,17 @@
+apiVersion: isindir.github.com/v1alpha3
+kind: SopsSecret
+metadata:
+  name: bananaapi-sopssecret
+  namespace: ingress-nginx
+spec:
+  # suspend reconciliation of the sops secret object
+  secretTemplates:
+    - name: my-secret-name-1
+      # labels:
+      #   label1: value1
+      # annotations:
+      #   key1: value1
+      # stringData:
+      #   data-name0: data-value0
+      data:
+        DB_PASS: mysecretpass
