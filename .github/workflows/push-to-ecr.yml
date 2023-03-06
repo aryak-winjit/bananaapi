@@ -46,7 +46,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and push it to ECR 
-        docker pull docker.io/library/bash:5
+        docker pull busybox
         # docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker tag docker.io/library/bash:5 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "Pushing image to ECR..."
