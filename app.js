@@ -9,5 +9,5 @@ app.get('/banana', function (req, res) {
   res.send('/banana ' + process.env.VERSION + " " + process.env.DB_USER + " " + process.env.DB_PASS);
 });
 app.listen(6012, function () {
-  console.log('Example app listening on port 6012!' + env_data_owner);
+  console.log('Example app listening on port 6012!' + process.env.VERSION + " " + process.env.DB_USER + " " + process.env.DB_PASS);
 });
