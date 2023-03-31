@@ -2,7 +2,10 @@ name: Build and deploy Angular app to an Azure Web App
 
 on:
   push:
-    branches: ["dev","staging","main"]
+    branches:
+    - dev
+    - staging
+    - main
   pull_request:
     branches: ["main"]
 
