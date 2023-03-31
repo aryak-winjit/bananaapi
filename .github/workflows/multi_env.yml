@@ -43,6 +43,7 @@ jobs:
         
     - name: dev build
       run: echo "Dev Build"
+  
 
   deployDev:
     name: Deploy to Dev
@@ -58,19 +59,34 @@ jobs:
       - name: dev build
         run: echo "Deploy Development"
 
+
+  build-prod:
+    name: Build-prod
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: "npm"
+        cache-dependency-path: package-lock.json
+        
+    - name: prod build
+      run: echo "Prod Build"
   
   deployProd:
     name: Deploy to Production
     permissions:
       contents: none
     runs-on: ubuntu-latest
-    needs: deployDev
+    needs: build-prod
     environment:
       name: "Production"
       url: ${ { steps.deploy-to-webapp-prod.outputs.webapp-url } }
 
     steps:
-      - name: dev build
+      - name: prod deploy
         env:
           ENV: ${{ vars.ENV }}
           ENV_SECRET: ${{ secrets.ENV_SECRET }}
