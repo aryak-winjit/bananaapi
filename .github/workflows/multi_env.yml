@@ -71,4 +71,10 @@ jobs:
 
     steps:
       - name: dev build
-        run: echo "Deploy Production"
+        env:
+          ENV: ${{ vars.ENV }}
+          ENV_SECRET: ${{ secrets.ENV_SECRET }}
+        run: |
+          echo "Deploy Production"
+          echo $ENV
+          echo $ENV_SECRET
