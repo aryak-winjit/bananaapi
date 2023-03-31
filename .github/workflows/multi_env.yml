@@ -36,7 +36,7 @@ jobs:
     environment:
       name: "Development"
       url: ${ { steps.deploy-to-webapp.outputs.webapp-url } }
-#     if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/dev'
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ env.NODE_VERSION }}
@@ -90,7 +90,7 @@ jobs:
       contents: none
     runs-on: ubuntu-latest
     needs: build-staging
-    if: github.ref == 'refs/heads/prod'
+    if: github.ref == 'refs/heads/staging'
     environment:
       name: "Staging"
       url: ${ { steps.deploy-to-webapp-prod.outputs.webapp-url } }
@@ -108,7 +108,7 @@ jobs:
   build-prod:
     name: Build-prod
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/prod'
+    if: github.ref == 'refs/heads/main'
     environment:
       name: "Production"
       url: ${ { steps.deploy-to-webapp.outputs.webapp-url } }
@@ -130,7 +130,7 @@ jobs:
       contents: none
     runs-on: ubuntu-latest
     needs: build-prod
-    if: github.ref == 'refs/heads/prod'
+    if: github.ref == 'refs/heads/main'
     environment:
       name: "Production"
       url: ${ { steps.deploy-to-webapp-prod.outputs.webapp-url } }
