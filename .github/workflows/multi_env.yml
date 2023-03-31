@@ -32,6 +32,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    environment:
+      name: "Development"
+      url: ${ { steps.deploy-to-webapp.outputs.webapp-url } }
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ env.NODE_VERSION }}
@@ -62,6 +65,9 @@ jobs:
   build-staging:
     name: Build-staging
     runs-on: ubuntu-latest
+    environment:
+      name: "Staging"
+      url: ${ { steps.deploy-to-webapp.outputs.webapp-url } }
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ env.NODE_VERSION }}
@@ -97,6 +103,9 @@ jobs:
   build-prod:
     name: Build-prod
     runs-on: ubuntu-latest
+    environment:
+      name: "Production"
+      url: ${ { steps.deploy-to-webapp.outputs.webapp-url } }
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ env.NODE_VERSION }}
