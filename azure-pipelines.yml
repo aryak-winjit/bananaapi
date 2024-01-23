@@ -19,3 +19,5 @@ steps:
   displayName: 'Run a one-line script'
 - script: echo "Using variable from variable group $(variable1)"
   displayName: 'Print Variable'
+- script: echo "Using variable from variable group $(secret1)"
+  displayName: 'Print Variable'
