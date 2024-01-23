@@ -28,4 +28,4 @@ steps:
     secureFile: 'secret.txt'  # Replace with the name of your secure file
     # Specify the target directory where the file will be downloaded
 - script: |
-    cat $(securefile.secureFilePath)
+    type $(securefile.secureFilePath)
