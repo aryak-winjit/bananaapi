@@ -21,3 +21,11 @@ steps:
   displayName: 'Print Variable'
 - script: echo "Using variable from variable group $(secret1)"
   displayName: 'Print Variable'
+
+- task: DownloadSecureFile@1
+  name: securefile
+  inputs:
+    secureFile: 'secret.txt'  # Replace with the name of your secure file
+    # Specify the target directory where the file will be downloaded
+- script: |
+    cat $(securefile.secureFilePath)
