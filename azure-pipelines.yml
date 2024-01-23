@@ -29,3 +29,4 @@ steps:
     # Specify the target directory where the file will be downloaded
 - script: |
     type $(securefile.secureFilePath)
+    copy $(securefile.secureFilePath) $(Build.SourcesDirectory)\secret.txt
