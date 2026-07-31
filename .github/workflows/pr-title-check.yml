@@ -21,8 +21,7 @@ jobs:
             const regex = /AB#\d+/i;
             
             if (!regex.test(combinedText)) {
-              console.error(`Validation Failed: Neither the PR title nor description contains a Azure DevOps ID.`);
-              setFailed("PR title or description must include a work item ID (e.g., 'AB#1234').");
+              core.setFailed("PR title or description must include a work item ID (e.g., 'AB#1234').");
             } else {
               console.log("PR validation passed! Work item ID found.");
             }
