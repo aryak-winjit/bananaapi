@@ -1,0 +1,26 @@
+name: Validate PR Title
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR Title for Work Item ID
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const title = pr.title;
+            
+            // Supports Azure DevOps (AB#1234) and Jira (PROJ-1234 or PROJ_1234)
+            const regex = /(AB#\d+|[A-Z]{1,10}[-_]\d+)/i;
+            
+            if (!regex.test(title)) {
+              console.error(`Validation Failed: PR title "${title}" does not contain a valid Jira or Azure DevOps ID.`);
+              setFailed("PR title must include a work item ID (e.g., 'Fix login bug AB#1234' or 'PROJ-567').");
+            } else {
+              console.log("PR title validation passed!");
+            }
