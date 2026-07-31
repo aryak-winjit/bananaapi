@@ -16,11 +16,17 @@ jobs:
             
             // Combines title and description into one text block to search
             const combinedText = `${title}\n${body}`;
-            
-            // Supports only Azure DevOps (AB#1234)
-            const regex = /AB#\d+/i;
-            
-            if (!regex.test(combinedText)) {
+
+            // Reject smashed IDs like AB#1323AB#456 — Azure Boards won't link them
+            if (/AB#\d+AB#/i.test(combinedText)) {
+              core.setFailed(
+                "Work item IDs must be separated (e.g., 'AB#1323 AB#456'), not joined like 'AB#1323AB#456'."
+              );
+              return;
+            }
+
+            // Requires at least one Azure DevOps work item ID (AB#1234)
+            if (!/AB#\d+/i.test(combinedText)) {
               core.setFailed("PR title or description must include a work item ID (e.g., 'AB#1234').");
             } else {
               console.log("PR validation passed! Work item ID found.");
