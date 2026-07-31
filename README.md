@@ -66,7 +66,9 @@ To ensure complete traceability between our code changes and project management 
 
 * **Example Valid PR Description**:
 > Resolves a bug in the payment gateway retry mechanism.
-> **Associated Work Item:** `AB#12345`
+
+> **Associated Work Item:** `AB#123456`
+
 
 
 

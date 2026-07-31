@@ -1,9 +1,7 @@
-name: Validate PR Title and Description
-
 on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
-
+name: Validate PR Title and Description
 jobs:
   check-pr-metadata:
     runs-on: ubuntu-latest
@@ -19,12 +17,12 @@ jobs:
             // Combines title and description into one text block to search
             const combinedText = `${title}\n${body}`;
             
-            // Supports Azure DevOps (AB#1234) and Jira (PROJ-1234 or PROJ_1234)
-            const regex = /(AB#\d+|[A-Z]{1,10}[-_]\d+)/i;
+            // Supports only Azure DevOps (AB#1234)
+            const regex = /AB#\d+/i;
             
             if (!regex.test(combinedText)) {
-              console.error(`Validation Failed: Neither the PR title nor description contains a valid Jira or Azure DevOps ID.`);
-              setFailed("PR title or description must include a work item ID (e.g., 'AB#1234' or 'PROJ-567').");
+              console.error(`Validation Failed: Neither the PR title nor description contains a Azure DevOps ID.`);
+              setFailed("PR title or description must include a work item ID (e.g., 'AB#1234').");
             } else {
               console.log("PR validation passed! Work item ID found.");
             }
